@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include <QApplication>
-//#include <QtQui>
+#include <QtXml>
 
 int main(int argc, char *argv[])
 {
