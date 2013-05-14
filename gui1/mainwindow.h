@@ -22,6 +22,10 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+	
+public slots:
+    void slotB1Clicked();
+
 };
 
 #endif // MAINWINDOW_H
