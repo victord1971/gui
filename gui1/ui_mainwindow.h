@@ -224,7 +224,6 @@ public:
 
         retranslateUi(MainWindow);
         QObject::connect(actionExit, SIGNAL(triggered()), MainWindow, SLOT(close()));
-        QObject::connect(actionNew, SIGNAL(triggered()), MainWindow, SLOT(lower()));
 
         tabWidget->setCurrentIndex(0);
 

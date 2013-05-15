@@ -25,7 +25,7 @@ private:
 	
 public slots:
     void slotB1Clicked();
-
+    void openDocument();
 };
 
 #endif // MAINWINDOW_H
