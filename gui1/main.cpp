@@ -2,7 +2,7 @@
 #include "main.h"
 #include "classxml.h"
 #include <QApplication>
-#include <QtXml>
+//#include <QtXml>
 
 
 int main(int argc, char *argv[])
@@ -10,7 +10,6 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
 
-    classXML clXML;
 
     w.show();
     
