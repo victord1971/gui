@@ -9,6 +9,9 @@
 QString fileName;
 QFile file(fileName);
 QXmlInputSource   source(&file);
+int count1;//=0;
+
+
 
 // ======================================================================
 class AddressBookParser : public QXmlDefaultHandler {
@@ -45,6 +48,11 @@ public:
         if (str != "contact" && str != "addressbook") {
             qDebug() << "TagName:" << str
                      << "\tText:"  << m_strText;
+        }
+        if (str == "author")
+        {
+            qDebug() << "знайдено книжок " << ++count1;
+            //MainWindow.fu();
         }
         return true;
     }
@@ -108,6 +116,11 @@ void MainWindow::openDocument()
                             tr("Failed to open\n%1").arg(fileName));
         return;
     }
+    else
+    {
+        count1=0;
+        ui->table1->setRowCount(10000);
+    }
 //    QTextStream stream(&file);
 
 //    Document *doc = new Document();
@@ -124,5 +137,13 @@ void MainWindow::openDocument()
 
     reader.setContentHandler(&handler);
     reader.parse(source);
-
+    ui->table1->setRowCount(count1-1);
 }
+
+void MainWindow::fu(void)
+{
+    //table->setItem(k, 0,new QTableWidgetItem(zzzz));
+                //Ui_MainWindow.table1->setItem(count1,1,new QTableWidgetItem(count1));
+    //Ui_MainWindow.table1->setRowHeight(1,23);
+}
+
