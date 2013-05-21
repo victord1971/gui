@@ -24,8 +24,10 @@
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -48,6 +50,11 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QTableWidget *table1;
     QWidget *tab_2;
+    QVBoxLayout *verticalLayout;
+    QTableView *tableView;
+    QWidget *tab_3;
+    QVBoxLayout *verticalLayout_2;
+    QTableWidget *tableWidget;
     QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButton;
@@ -148,7 +155,28 @@ public:
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
+        verticalLayout = new QVBoxLayout(tab_2);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        tableView = new QTableView(tab_2);
+        tableView->setObjectName(QStringLiteral("tableView"));
+
+        verticalLayout->addWidget(tableView);
+
         tabWidget->addTab(tab_2, QString());
+        tab_3 = new QWidget();
+        tab_3->setObjectName(QStringLiteral("tab_3"));
+        verticalLayout_2 = new QVBoxLayout(tab_3);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        tableWidget = new QTableWidget(tab_3);
+        tableWidget->setObjectName(QStringLiteral("tableWidget"));
+
+        verticalLayout_2->addWidget(tableWidget);
+
+        tabWidget->addTab(tab_3, QString());
         splitter->addWidget(tabWidget);
         layoutWidget = new QWidget(splitter);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
@@ -272,6 +300,7 @@ public:
         ___qtablewidgetitem8->setText(QApplication::translate("MainWindow", "records_date", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Tab 1", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Tab 2", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("MainWindow", "\320\241\321\202\321\200\320\260\320\275\320\270\321\206\320\260", 0));
         pushButton->setText(QApplication::translate("MainWindow", "PushButton", 0));
         pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", 0));
         pushButton_3->setText(QApplication::translate("MainWindow", "PushButton", 0));

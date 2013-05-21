@@ -16,7 +16,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void fu(void);
+    friend void fu(void);
 
 private slots:
     void on_tableWidget_activated(const QModelIndex &index);
@@ -27,6 +27,7 @@ private:
 public slots:
     void slotB1Clicked();
     void openDocument();
+    void slotFu();
 };
 
 #endif // MAINWINDOW_H
