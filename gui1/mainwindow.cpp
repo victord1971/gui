@@ -7,23 +7,24 @@
 #include <QtXml>
 
 QString fileName;
+//QString* fileName = new QString;
 QFile file(fileName);
+//QFile* file(fileName) = new QFile
 QXmlInputSource   source(&file);
-int count1;//=0;
 
+int count1;//=0;
+//int *count1 = new int;
 
 
 // ======================================================================
-class AddressBookParser : public QXmlDefaultHandler {
+class XmlHandler : public QXmlDefaultHandler//, public Ui_MainWindow
+{
     //Q_OBJECT
-signals:
-    void doFu();
 
 private:
     QString m_strText;
 
 public:
-    friend void fu(void);
     // ------------------------------------------------------------------
     bool startElement(const QString&,
                       const QString&,
@@ -59,6 +60,7 @@ public:
         if (str == "author")
         {
             qDebug() << "знайдено книжок " << ++count1;
+            //table1->setRowHeight(1,30);
             //fu();
             //emit doFu();
         }
@@ -74,16 +76,17 @@ public:
         return false;
     }
 
+signals:
+    void doFu();
 };
 //=====================================================================
 
 
 
-AddressBookParser handler;
-//QFile             file("xml_0.xml");
-//QXmlInputSource   source(&file);
-QXmlSimpleReader  reader;
-
+//AddressBookParser handler;
+XmlHandler *handler = new XmlHandler;
+//QXmlSimpleReader  reader;
+QXmlSimpleReader *reader = new QXmlSimpleReader;
 
 //======================================================================
 MainWindow::MainWindow(QWidget *parent) :
@@ -94,6 +97,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->actionNew, SIGNAL(triggered()), this, SLOT(slotB1Clicked()));
     connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(openDocument()));
+    //connect(&handler, SIGNAL(doFu()), this, SLOT(slotFu()));
 }
 
 MainWindow::~MainWindow()
@@ -147,10 +151,10 @@ void MainWindow::openDocument()
 //    doc->setFileName(fileName);
 //    addDocument(doc);
 
-    reader.setContentHandler(&handler);
-    reader.parse(source);
+    reader->setContentHandler(handler);
+    reader->parse(source);
     ui->table1->setRowCount(count1-1);
-    //ui->table1->show();
+    //ui->table1->setRowHeight(1,30);
 }
 
 void MainWindow::slotFu()
@@ -164,6 +168,7 @@ void fu(void)
 {
     //table->setItem(k, 0,new QTableWidgetItem(zzzz));
                 //Ui_MainWindow.table1->setItem(count1,1,new QTableWidgetItem(count1));
-    //Ui_MainWindow.table1->setRowHeight(1,23);
+    //ui.table1->setRowHeight(1,23);
+    //Ui::MainWindow.table1->setRowHeight(1,23);
 }
 

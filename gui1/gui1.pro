@@ -14,10 +14,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    classxml.cpp
+    xmlhandler.cpp
 
 HEADERS  += mainwindow.h \
     main.h \
-    classxml.h
+    xmlhandler.h
 
 FORMS    += mainwindow.ui
