@@ -3,7 +3,7 @@
 #include <QFileDialog>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "xmlhandler.h"
 #include <QtXml>
 
 QString fileName;
@@ -12,79 +12,9 @@ QFile file(fileName);
 //QFile* file(fileName) = new QFile
 QXmlInputSource   source(&file);
 
-int count1;//=0;
-//int *count1 = new int;
 
+extern int count1;
 
-// ======================================================================
-class XmlHandler : public QXmlDefaultHandler//, public Ui_MainWindow
-{
-    //Q_OBJECT
-
-private:
-    QString m_strText;
-
-public:
-    // ------------------------------------------------------------------
-    bool startElement(const QString&,
-                      const QString&,
-                      const QString&,
-                      const QXmlAttributes& attrs
-                     )
-    {
-        for(int i = 0; i < attrs.count(); i++) {
-            if(attrs.localName(i) == "number") {
-                qDebug() << "Attr:" << attrs.value(i);
-            }
-        }
-        return true;
-    }
-
-    // ------------------------------------------------------------------
-    bool characters(const QString& strText)
-    {
-        m_strText = strText;
-        //qDebug() << "знайдено!";
-        //emit doFu();
-        return true;
-    }
-
-    // ------------------------------------------------------------------
-    bool endElement(const QString&, const QString&, const QString& str)
-    {
-
-//        if (str != "contact" && str != "addressbook") {
-//            qDebug() << "TagName:" << str
-//                     << "\tText:"  << m_strText;
-//        }
-        if (str == "author")
-        {
-            qDebug() << "знайдено книжок " << ++count1;
-            //table1->setRowHeight(1,30);
-            //fu();
-            //emit doFu();
-        }
-        return true;
-    }
-
-    // ------------------------------------------------------------------
-    bool fatalError(const QXmlParseException& exception)
-    {
-        qDebug() << "Line:"      << exception.lineNumber()
-                 << ", Column:"  << exception.columnNumber()
-                 << ", Message:" << exception.message();
-        return false;
-    }
-
-signals:
-    void doFu();
-};
-//=====================================================================
-
-
-
-//AddressBookParser handler;
-XmlHandler *handler = new XmlHandler;
 //QXmlSimpleReader  reader;
 QXmlSimpleReader *reader = new QXmlSimpleReader;
 
@@ -117,6 +47,9 @@ void MainWindow::slotB1Clicked()
 
 void MainWindow::openDocument()
 {
+    //AddressBookParser handler;
+    XmlHandler *handler = new XmlHandler;
+
     fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
                                                     "./",
                                                     " XML (*.xml)");
@@ -154,21 +87,7 @@ void MainWindow::openDocument()
     reader->setContentHandler(handler);
     reader->parse(source);
     ui->table1->setRowCount(count1-1);
-    //ui->table1->setRowHeight(1,30);
+    //ui->table1->setRowHeight(0,100);
 }
 
-void MainWindow::slotFu()
-{
-
-}
-
-
-
-void fu(void)
-{
-    //table->setItem(k, 0,new QTableWidgetItem(zzzz));
-                //Ui_MainWindow.table1->setItem(count1,1,new QTableWidgetItem(count1));
-    //ui.table1->setRowHeight(1,23);
-    //Ui::MainWindow.table1->setRowHeight(1,23);
-}
 
