@@ -47,24 +47,27 @@
 MainWindow::MainWindow()
 {
     QStringList labels;
-    labels << tr("Title") << tr("Location");
+    labels << tr("ID") << tr("Author") << tr("Title");
 
     treeWidget = new QTreeWidget;
-    treeWidget->header()->setSectionResizeMode(QHeaderView::Stretch);
+    //treeWidget->header()->setSectionResizeMode(QHeaderView::Stretch);
     treeWidget->setHeaderLabels(labels);
+    treeWidget->setSortingEnabled(TRUE);
+
     setCentralWidget(treeWidget);
 
     createActions();
     createMenus();
 
-    statusBar()->showMessage(tr("Ready"));
-
-    setWindowTitle(tr("SAX Bookmarks"));
+    setWindowTitle(tr("Library"));
     resize(480, 320);
+
+    statusBar()->showMessage(tr("Ready"), 3000);
 }
 
 void MainWindow::open()
 {
+    statusBar()->showMessage(tr("Opening file"), 3000);
     QString fileName =
             QFileDialog::getOpenFileName(this, tr("Open Bookmark File"),
                                          QDir::currentPath(),
@@ -90,7 +93,7 @@ void MainWindow::open()
 
     QXmlInputSource xmlInputSource(&file);
     if (reader.parse(xmlInputSource))
-        statusBar()->showMessage(tr("File loaded"), 2000);
+        statusBar()->showMessage(tr("File loaded"), 3000);
 }
 
 void MainWindow::saveAs()
