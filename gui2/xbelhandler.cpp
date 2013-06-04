@@ -40,7 +40,7 @@
 #include <QtWidgets>
 #include "xbelhandler.h"
 
-XbelHandler::XbelHandler(QTableWidget *treeWidget) : treeWidget(treeWidget)
+XbelHandler::XbelHandler(QTreeWidget *treeWidget) : treeWidget(treeWidget)
 {
     item = 0;
     metXbelTag = false;
@@ -67,22 +67,31 @@ bool XbelHandler::startElement(const QString&/*namespaceURI*/,const QString&/*lo
         metXbelTag = true;
     }
     else
-        if (qName == "folder") {
+        if (qName == "book") {
             item = createChildItem(qName);
             item->setFlags(item->flags() | Qt::ItemIsEditable);
-//            item->setIcon(2, folderIcon);
-//            item->setText(2, QObject::tr("Folder"));
+            item->setIcon(0, folderIcon);
+            item->setText(0, QObject::tr("book"));
             bool folded = (attributes.value("folded") != "no");
-//            treeWidget->setItemExpanded(item, !folded);
+            treeWidget->setItemExpanded(item, !folded);
         }
         else
-            if (qName == "bookmark") {
+            if (qName == "author") {
                 item = createChildItem(qName);
                 item->setFlags(item->flags() | Qt::ItemIsEditable);
-//                item->setIcon(2, bookmarkIcon);
-//                item->setText(2, QObject::tr("Unknown title"));
-//                item->setText(1, attributes.value("href"));
+                item->setIcon(0, folderIcon);
+                item->setText(0, QObject::tr("author"));
+                bool folded = (attributes.value("folded") != "no");
+                treeWidget->setItemExpanded(item, !folded);
             }
+            else
+                if (qName == "bookmark") {
+                    item = createChildItem(qName);
+                    item->setFlags(item->flags() | Qt::ItemIsEditable);
+                    item->setIcon(0, bookmarkIcon);
+                    item->setText(0, QObject::tr("Unknown title"));
+                    item->setText(1, attributes.value("href"));
+                }
 //            else
 //                if (qName == "separator") {
 //                    item = createChildItem(qName);
@@ -96,14 +105,18 @@ bool XbelHandler::startElement(const QString&/*namespaceURI*/,const QString&/*lo
 bool XbelHandler::endElement(const QString&/*namespaceURI*/,const QString&/*localName*/,const QString &qName)
 {
     if (qName == "title") {
-        if (item) {
-            //item->setText(2, currentText);
-        }
+        if (item)
+            item->setText(0, currentText);
     }
     else
-        if (qName == "folder" || qName == "bookmark" || qName == "separator") {
-            //item = item->parent();
+        if (qName == "book" || qName == "bookmark") {
+            item = item->parent();
         }
+        else
+            if (qName == "author" || qName == "bookmark") {
+                item->setText(0, currentText);
+                item = item->parent();
+            }
     return true;
 }
 
@@ -127,15 +140,15 @@ QString XbelHandler::errorString() const
     return errorStr;
 }
 
-QTableWidgetItem *XbelHandler::createChildItem(const QString &tagName)
+QTreeWidgetItem *XbelHandler::createChildItem(const QString &tagName)
 {
-    QTableWidgetItem *childItem;
+    QTreeWidgetItem *childItem;
     if (item) {
-        //childItem = new QTableWidgetItem(item);
+        childItem = new QTreeWidgetItem(item);
     }
     else {
-        //childItem = new QTableWidgetItem(treeWidget);
+        childItem = new QTreeWidgetItem(treeWidget);
     }
-    //childItem->setData(0, Qt::UserRole, tagName);
+    childItem->setData(0, Qt::UserRole, tagName);
     return childItem;
 }

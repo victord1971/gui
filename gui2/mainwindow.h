@@ -43,7 +43,7 @@
 
 #include <QMainWindow>
 
-class QTableWidget;
+class QTreeWidget;
 
 class MainWindow : public QMainWindow
 {
@@ -61,7 +61,7 @@ private:
     void createActions();
     void createMenus();
 
-    QTableWidget *treeWidget;
+    QTreeWidget *treeWidget;
 
     QMenu *fileMenu;
     QMenu *helpMenu;

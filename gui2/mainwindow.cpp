@@ -49,10 +49,10 @@ MainWindow::MainWindow()
     QStringList labels;
     labels << tr("ID") << tr("Author") << tr("Title");
 
-    treeWidget = new QTableWidget(10,3);
-    //treeWidget->header()->setSectionResizeMode(QHeaderView::Stretch);
-    treeWidget->setHorizontalHeaderLabels(labels);
-    treeWidget->setSortingEnabled(TRUE);
+    treeWidget = new QTreeWidget;
+    treeWidget->header()->setSectionResizeMode(QHeaderView::Stretch); //столбці равной ширині
+    treeWidget->setHeaderLabels(labels);
+    treeWidget->setSortingEnabled(TRUE);    //сортировка
 
     setCentralWidget(treeWidget);
 
@@ -98,25 +98,25 @@ void MainWindow::open()
 
 void MainWindow::saveAs()
 {
-//    QString fileName =
-//            QFileDialog::getSaveFileName(this, tr("Save Bookmark File"),
-//                                         QDir::currentPath(),
-//                                         tr("XBEL Files (*.xbel *.xml)"));
-//    if (fileName.isEmpty())
-//        return;
+    QString fileName =
+            QFileDialog::getSaveFileName(this, tr("Save Bookmark File"),
+                                         QDir::currentPath(),
+                                         tr("XBEL Files (*.xbel *.xml)"));
+    if (fileName.isEmpty())
+        return;
 
-//    QFile file(fileName);
-//    if (!file.open(QFile::WriteOnly | QFile::Text)) {
-//        QMessageBox::warning(this, tr("SAX Bookmarks"),
-//                             tr("Cannot write file %1:\n%2.")
-//                             .arg(fileName)
-//                             .arg(file.errorString()));
-//        return;
-//    }
+    QFile file(fileName);
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
+        QMessageBox::warning(this, tr("SAX Bookmarks"),
+                             tr("Cannot write file %1:\n%2.")
+                             .arg(fileName)
+                             .arg(file.errorString()));
+        return;
+    }
 
-//    XbelGenerator generator(treeWidget);
-//    if (generator.write(&file))
-//        statusBar()->showMessage(tr("File saved"), 2000);
+    XbelGenerator generator(treeWidget);
+    if (generator.write(&file))
+        statusBar()->showMessage(tr("File saved"), 2000);
 }
 
 void MainWindow::about()

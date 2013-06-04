@@ -44,13 +44,13 @@
 #include <QIcon>
 #include <QXmlDefaultHandler>
 
-class QTableWidget;
-class QTableWidgetItem;
+class QTreeWidget;
+class QTreeWidgetItem;
 
 class XbelHandler : public QXmlDefaultHandler
 {
 public:
-    XbelHandler(QTableWidget *treeWidget);
+    XbelHandler(QTreeWidget *treeWidget);
 
     bool startElement(const QString &namespaceURI, const QString &localName,
                       const QString &qName, const QXmlAttributes &attributes);
@@ -61,10 +61,10 @@ public:
     QString errorString() const;
 
 private:
-    QTableWidgetItem *createChildItem(const QString &tagName);
+    QTreeWidgetItem *createChildItem(const QString &tagName);
 
-    QTableWidget *treeWidget;
-    QTableWidgetItem *item;
+    QTreeWidget *treeWidget;
+    QTreeWidgetItem *item;
     QString currentText;
     QString errorStr;
     bool metXbelTag;
