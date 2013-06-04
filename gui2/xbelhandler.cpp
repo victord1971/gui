@@ -73,7 +73,7 @@ bool XbelHandler::startElement(const QString&/*namespaceURI*/,const QString&/*lo
             item->setIcon(0, folderIcon);
             item->setText(0, QObject::tr("book"));
             bool folded = (attributes.value("folded") != "no");
-            treeWidget->setItemExpanded(item, !folded);
+            treeWidget->setItemExpanded(item, true);
         }
         else
             if (qName == "author") {
