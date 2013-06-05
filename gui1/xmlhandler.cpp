@@ -13,24 +13,24 @@ int count1;
 //}
 
 
-    bool XmlHandler::startElement(const QString&,
-                      const QString&,
-                      const QString&,
-                      const QXmlAttributes& attrs
-                     )
+bool XmlHandler::startElement(const QString&,const QString&,const QString &qName,const QXmlAttributes& attrs)
     {
-        for(int i = 0; i < attrs.count(); i++) {
-            if(attrs.localName(i) == "number") {
-                qDebug() << "Attr:" << attrs.value(i);
-            }
-        }
+        qDebug() << "   Attr:";
+//        for(int i = 0; i < attrs.count(); i++) {
+//            if(attrs.localName(i) == "number") {
+//                qDebug() << "Attr:" << attrs.value(i);
+//            }
+//        }
+         if (qName == "book") {
+             qDebug() << "book:";
+         }
         return true;
     }
 
     // ------------------------------------------------------------------
     bool XmlHandler::characters(const QString& strText)
     {
-        //m_strText = strText;
+        m_strText = strText;
 
         return true;
     }
