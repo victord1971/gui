@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<library>
+<link_types>
+	<type>fb2</type>
+	<type>jpg</type>
+</link_types>
+<books>
+<book>
+	<id>1000</id><ISBN></ISBN>
+	<author>Автор</author>
+	<title>Назва</title>
+	<imprint_date>рік видання</imprint_date>
+	<pages>стор.</pages>
+	<items>Твір 1</items><items>Твір 2</items>
+	<records_date><day>день</day><month>місяць</month><year>рік</year></records_date>
+	<position><cupboard>шафа</cupboard><shelf>поличка</shelf></position>
+	<link type="fb2">посилання</link>
+	<note>Примітка</note>
+</book>
+<book>
+	<id>1001</id><ISBN>978-966-03-5461-6</ISBN>
+	<author>Довженко О.</author><author>Насіковський С.</author>
+	<title>Зачарована Десна</title>
+	<imprint_date>2011</imprint_date>
+	<pages>603</pages>
+	<items>Щоденник</items><items>Україна в огні</items>
+	<items>Незабутнє</items><items>Воля до життя</items>
+	<items>Корінь життя</items><items>Зачарована Десна</items>
+	<records_date><day>11</day><month>07</month><year>2011</year></records_date>
+	<position><cupboard>шафа</cupboard><shelf>поличка</shelf></position>
+	<link type="jpg">..\jpg\81829509.jpg</link>
+	<note>Шкільна бібліотека</note>
+</book>
+</books>
+<Journals>
+
+<Journal>
+	<title>РОМАН-ГАЗЕТА</title>
+	<imprint_date>рік видання</imprint_date>
+	<number>01</number>
+	<pages>стор.</pages>
+	<author>Автор1</author><author>Автор2</author>
+	<items>Твір 1</items><items>Твір 2</items>
+	<position><cupboard>шафа</cupboard><shelf>поличка</shelf></position>
+	<link type="fb2">посилання</link>
+	<note>Примітка</note>
+</Journal>
+
+<Journal>
+	<title>РОМАН-ГАЗЕТА</title>
+	<imprint_date>1991</imprint_date>
+	<number>01</number>
+	<pages>96</pages>
+	<author>Пикуль Валентин</author><author>Автор2</author>
+	<items>Нечистая сила</items><items>Твір 2</items>
+	<position><cupboard>шафа</cupboard><shelf>поличка</shelf></position>
+	<link type="fb2">посилання</link>
+	<note>Начало</note>
+</Journal>
+
+</Journals>
+</library>

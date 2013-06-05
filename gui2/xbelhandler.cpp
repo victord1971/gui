@@ -44,6 +44,7 @@ XbelHandler::XbelHandler(QTreeWidget *treeWidget) : treeWidget(treeWidget)
 {
     item = 0;
     metXbelTag = false;
+    bookOrJournal = false;
     QStyle *style = treeWidget->style();
     folderIcon.addPixmap(style->standardPixmap(QStyle::SP_DirClosedIcon),
                          QIcon::Normal, QIcon::Off);
@@ -54,6 +55,7 @@ XbelHandler::XbelHandler(QTreeWidget *treeWidget) : treeWidget(treeWidget)
 
 bool XbelHandler::startElement(const QString&/*namespaceURI*/,const QString&/*localName*/,const QString &qName,const QXmlAttributes &attributes)
 {
+    qDebug() << "XbelHandler::startElement-->" << qName;
     if (!metXbelTag && qName != "library") {
         errorStr = QObject::tr("The file is not an XBEL file.");
         return false;
@@ -66,32 +68,40 @@ bool XbelHandler::startElement(const QString&/*namespaceURI*/,const QString&/*lo
         }
         metXbelTag = true;
     }
-    else
-        if (qName == "book") {
-            item = createChildItem(qName);
-            item->setFlags(item->flags() | Qt::ItemIsEditable);
-            item->setIcon(0, folderIcon);
-            item->setText(0, QObject::tr("book"));
-            bool folded = (attributes.value("folded") != "no");
-            treeWidget->setItemExpanded(item, true);
+    else {
+        if (bookOrJournal && qName == "Journals")
+            bookOrJournal = false;
+        if (!bookOrJournal && qName == "books") {
+            bookOrJournal = true;
         }
-        else
-            if (qName == "author") {
+        //if  (bookOrJournal) {
+            if (qName == "book") {
                 item = createChildItem(qName);
-                item->setFlags(item->flags() | Qt::ItemIsEditable);
+                //item->setFlags(item->flags() | Qt::ItemIsEditable);
                 item->setIcon(0, folderIcon);
-                item->setText(0, QObject::tr("author"));
+                item->setText(0, QObject::tr("book"));
                 bool folded = (attributes.value("folded") != "no");
-                treeWidget->setItemExpanded(item, !folded);
+                treeWidget->setItemExpanded(item, true);
             }
             else
-                if (qName == "bookmark") {
+                if (bookOrJournal && qName == "author") {
                     item = createChildItem(qName);
-                    item->setFlags(item->flags() | Qt::ItemIsEditable);
-                    item->setIcon(0, bookmarkIcon);
-                    item->setText(0, QObject::tr("Unknown title"));
-                    item->setText(1, attributes.value("href"));
+                    //item->setFlags(item->flags() | Qt::ItemIsEditable);
+                    item->setIcon(0, folderIcon);
+                    item->setText(0, QObject::tr("author"));
+                    bool folded = (attributes.value("folded") != "no");
+                    treeWidget->setItemExpanded(item, !folded);
                 }
+                else
+                    if (qName == "bookmark") {
+                        item = createChildItem(qName);
+                        item->setFlags(item->flags() | Qt::ItemIsEditable);
+                        item->setIcon(0, bookmarkIcon);
+                        item->setText(0, QObject::tr("Unknown title"));
+                        item->setText(1, attributes.value("href"));
+                    }
+        //}
+    }
 //            else
 //                if (qName == "separator") {
 //                    item = createChildItem(qName);
@@ -103,17 +113,18 @@ bool XbelHandler::startElement(const QString&/*namespaceURI*/,const QString&/*lo
 }
 
 bool XbelHandler::endElement(const QString&/*namespaceURI*/,const QString&/*localName*/,const QString &qName)
-{
+{    
+    qDebug() << "XbelHandler::endElement-->" << qName;
     if (qName == "title") {
         if (item)
             item->setText(0, currentText);
     }
     else
-        if (qName == "book" || qName == "bookmark") {
+        if (qName == "book") {
             item = item->parent();
         }
         else
-            if (qName == "author" || qName == "bookmark") {
+            if (bookOrJournal && qName == "author") {
                 item->setText(0, currentText);
                 item = item->parent();
             }
@@ -123,6 +134,8 @@ bool XbelHandler::endElement(const QString&/*namespaceURI*/,const QString&/*loca
 bool XbelHandler::characters(const QString &str)
 {
     currentText += str;
+    //qDebug() << "XbelHandler::characters1-->" << str;
+    //qDebug() << "XbelHandler::characters2-->" << currentText;
     return true;
 }
 

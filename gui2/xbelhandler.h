@@ -67,7 +67,7 @@ private:
     QTreeWidgetItem *item;
     QString currentText;
     QString errorStr;
-    bool metXbelTag;
+    bool metXbelTag,bookOrJournal;
 
     QIcon folderIcon;
     QIcon bookmarkIcon;

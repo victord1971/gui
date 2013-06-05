@@ -52,7 +52,7 @@ MainWindow::MainWindow()
     treeWidget = new QTreeWidget;
     treeWidget->header()->setSectionResizeMode(QHeaderView::Stretch); //столбці равной ширині
     treeWidget->setHeaderLabels(labels);
-    treeWidget->setSortingEnabled(TRUE);    //сортировка
+    //treeWidget->setSortingEnabled(TRUE);    //сортировка
 
     setCentralWidget(treeWidget);
 
@@ -60,7 +60,7 @@ MainWindow::MainWindow()
     createMenus();
 
     setWindowTitle(tr("Library"));
-    resize(480, 320);
+    resize(1024, 700);
 
     statusBar()->showMessage(tr("Ready"), 3000);
 }
