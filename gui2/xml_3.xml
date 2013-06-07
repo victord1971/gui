@@ -208,7 +208,7 @@
 
 <book>
 	<id>1015</id><ISBN></ISBN>
-	<author>Кривандин В.А. , Марков Б.Л.</author>
+	<author>Кривандин В.А.</author><author>Марков Б.Л.</author>
 	<title>Металлургические печи</title>
 	<imprint_date>1977</imprint_date>
 	<pages>464</pages>
@@ -221,7 +221,7 @@
 
 <book>
 	<id>1016</id><ISBN></ISBN>
-	<author>Явойский В.И. , Ойкс Г.Н.</author>
+	<author>Явойский В.И.</author><author>Ойкс Г.Н.</author>
 	<title>Металлургия стали</title>
 	<imprint_date>1973</imprint_date>
 	<pages>817</pages>
@@ -247,7 +247,8 @@
 
 <book>
 	<id>1018</id><ISBN></ISBN>
-	<author>Воскобойников В.Г. , Кудрин В.А. , Якушев А.М.</author>
+	<author>Воскобойников В.Г.</author><author>Кудрин В.А.</author>
+	<author>Якушев А.М.</author>
 	<title>Общяя металлургия</title>
 	<imprint_date>1979</imprint_date>
 	<pages>488</pages>
@@ -741,41 +742,50 @@
 
 <book>
 	<id>1056</id><ISBN>5-85154-123-7</ISBN>
-	<author>Никулин Ю.В., Рязанов Э.А., Кичигин С.А., Жванецкий М.М., Горин Г.И., Рыбак М.И., Ефимов А.Н.</author>
-	<title>Антология мирового анекдота. Тютелька в тютельку</title>
+	<author>Никулин Ю.В.</author><author>Рязанов Э.А.</author>
+	<author>Кичигин С.А.</author><author>Жванецкий М.М.</author>
+	<author>Горин Г.И.</author><author>Рыбак М.И.</author>
+	<author>Ефимов А.Н.</author>
+	<title>Тютелька в тютельку</title>
 	<imprint_date>1994</imprint_date>
 	<pages>468</pages>
 	<items>Твір 1</items><items>Твір 2</items>
 	<records_date><day>4</day><month>9</month><year>2011</year></records_date>
 	<position><cupboard>шафа</cupboard><shelf>поличка</shelf></position>
 	<link type="fb2">посилання</link>
-	<note>Примітка</note>
+	<note>Антология мирового анекдота</note>
 </book>
 
 <book>
 	<id>1057</id><ISBN>5-85154-117-2</ISBN>
-	<author>Никулин Ю.В., Рязанов Э.А., Кичигин С.А., Жванецкий М.М., Горин Г.И., Рыбак М.И., Ефимов А.Н.</author>
-	<title>Антология мирового анекдота. Всем стоять!..Всем сидеть!..</title>
+	<author>Никулин Ю.В.</author><author>Рязанов Э.А.</author>
+	<author>Кичигин С.А.</author><author>Жванецкий М.М.</author>
+	<author>Горин Г.И.</author><author>Рыбак М.И.</author>
+	<author>Ефимов А.Н.</author>
+	<title>Всем стоять!..Всем сидеть!..</title>
 	<imprint_date>1994</imprint_date>
 	<pages>367</pages>
 	<items>Твір 1</items><items>Твір 2</items>
 	<records_date><day>4</day><month>9</month><year>2011</year></records_date>
 	<position><cupboard>шафа</cupboard><shelf>поличка</shelf></position>
 	<link type="fb2">посилання</link>
-	<note>Примітка</note>
+	<note>Антология мирового анекдота</note>
 </book>
 
 <book>
 	<id>1058</id><ISBN>5-85154-103-2</ISBN>
-	<author>Никулин Ю.В., Рязанов Э.А., Кичигин С.А., Жванецкий М.М., Горин Г.И., Рыбак М.И., Ефимов А.Н.</author>
-	<title>Антология мирового анекдота. Вот мы - так мы!</title>
+	<author>Никулин Ю.В.</author><author>Рязанов Э.А.</author>
+	<author>Кичигин С.А.</author><author>Жванецкий М.М.</author>
+	<author>Горин Г.И.</author><author>Рыбак М.И.</author>
+	<author>Ефимов А.Н.</author>
+	<title>Вот мы - так мы!</title>
 	<imprint_date>1994</imprint_date>
 	<pages>399</pages>
 	<items>Твір 1</items><items>Твір 2</items>
 	<records_date><day>4</day><month>9</month><year>2011</year></records_date>
 	<position><cupboard>шафа</cupboard><shelf>поличка</shelf></position>
 	<link type="fb2">посилання</link>
-	<note>Примітка</note>
+	<note>Антология мирового анекдота</note>
 </book>
 
 <book>

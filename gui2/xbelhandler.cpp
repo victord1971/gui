@@ -77,7 +77,7 @@ bool XbelHandler::startElement(const QString&/*namespaceURI*/,const QString&/*lo
         //if  (bookOrJournal) {
             if (qName == "book") {
                 item = createChildItem(qName);
-                //item->setFlags(item->flags() | Qt::ItemIsEditable);
+                item->setFlags(item->flags() | Qt::ItemIsEditable);
                 item->setIcon(0, folderIcon);
                 item->setText(0, QObject::tr("book"));
                 bool folded = (attributes.value("folded") != "no");
@@ -86,8 +86,8 @@ bool XbelHandler::startElement(const QString&/*namespaceURI*/,const QString&/*lo
             else
                 if (bookOrJournal && qName == "author") {
                     item = createChildItem(qName);
-                    //item->setFlags(item->flags() | Qt::ItemIsEditable);
-                    item->setIcon(0, folderIcon);
+                    item->setFlags(item->flags() | Qt::ItemIsEditable);
+                    //item->setIcon(0, folderIcon);
                     item->setText(0, QObject::tr("author"));
                     bool folded = (attributes.value("folded") != "no");
                     treeWidget->setItemExpanded(item, !folded);
