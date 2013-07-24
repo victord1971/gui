@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--DOCTYPE library-->
+
+<library version="1.0">
+
+    <folder folded="yes">
+        <title>Literature Sites</title>
+		
+          <bookmark href="http://www.cc.columbia.edu/cu/libraries/subjects/speccol.html">
+            <title>Guide to Special Collections (Columbia University)</title>
+          </bookmark>
+		  
+          <bookmark href="http://www.ipl.org/ref/litcrit/">
+            <title>Literary Criticism on the Web from the Internet Public Library</title>
+          </bookmark>
+
+    </folder>
+	
+</library>

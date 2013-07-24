@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--DOCTYPE library-->
+
+<library>
+<link_types>
+	<type>version</type>
+	<type>folded</type>
+	<type>href</type>
+</link_types>
+  
+	
+</library>
